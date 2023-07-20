@@ -15,6 +15,46 @@ const create = async( data ) => {
     }
 }
 
+const getAll = async()=> {
+    try{
+        const categories = await Category.findAll();
+        return categories;
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+const getById = async(categoryId)=> {
+    try{
+        // const category = await category.findOne({
+        //     where: {
+        //         id: categoryId
+        //     }
+        // });
+    const category = await Category.findByPk(categoryId);
+    return category;
+    } catch(err) {
+        console.log(err);
+    }
+}  
+
+const getByName = async(categoryName)=>{
+    try{
+        const category = await Category.findOne({
+            where: {
+                name: categoryName
+            }
+        });
+        return category;
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
 module.exports = {
-    create
+    create,
+    getAll,
+    getById,
+    getByName
 }
