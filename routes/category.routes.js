@@ -9,7 +9,7 @@ const routes = (app)=>{
     );
     app.get(
         '/ecom/api/v1/category', 
-        categoryController.getAllCategories
+        categoryController.getAllCategories  
     );
     app.get(
         '/ecom/api/v1/category/:id',
@@ -25,6 +25,10 @@ const routes = (app)=>{
         '/ecom/api/v1/category/:id',
         categoryValidator.validatePartialUpdate,
         categoryController.updateCategory
+    );
+    app.delete(
+        '/ecom/api/v1/category/:id',
+        categoryController.deleteCategory
     );
 }
 

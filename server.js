@@ -13,7 +13,7 @@ app.set('views','./views');
 app.set('view engine', 'ejs');
 
 // Registring the routes
-categoryRoutes(app);
+categoryRoutes(app); 
 
 const PORT = process.env.PORT; //this will be the port on our local system where server will run
 

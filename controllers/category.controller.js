@@ -1,6 +1,6 @@
 const categoryService = require("../services/category.service");
 const _ = require('lodash');
-
+ 
 const serverError = {
   message: "Something went wrong",
   success: false,
@@ -45,7 +45,7 @@ const getAllCategories = async (req, res) => {
 };
 
 const getCategoryById = async (req, res) => {
-  const response = await categoryService.getById(req.params.id);
+  const response = await categoryService.getById(req.params.id);  
   if (!response) {
     return res.status(500).json(serverError);
   }
@@ -74,9 +74,23 @@ const updateCategory = async (req,res)=> {
     });
 }
 
+const deleteCategory = async(req,res)=>{
+  const response = await categoryService.destroy(req.params.id);
+  if(!response) {
+    return res.status(500).json(serverError);
+  }
+  return res.status(200).json({
+    message: 'Successfully deleted the category',
+    success: true,
+    data: {},
+    err: {}
+  });
+}
+
 module.exports = {
   createCategory,
   getAllCategories,
   getCategoryById,
-  updateCategory 
+  updateCategory,
+  deleteCategory 
 };

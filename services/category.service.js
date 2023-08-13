@@ -9,8 +9,8 @@ const create = async (data) => {
     });
     return category;
   } catch (err) {
-    console.log("Something went wrong");
-    console.log(err);
+    console.log("Something went wrong"); 
+    console.log(err); 
   }
 };
 
@@ -33,7 +33,7 @@ const getById = async (categoryId) => {
     const category = await Category.findByPk(categoryId);
     return category;
   } catch (err) {
-    console.log(err);
+    console.log(err); 
   }
 };
 
@@ -52,9 +52,9 @@ const getByName = async (categoryName) => {
 
 const update = async (data, categoryId) => {
   try {
-    const category = await Category.findByPk(categoryId);
+    const category = await Category.findByPk(categoryId);   
     if(!category) {
-        console.log("Not able to find category");
+        console.log("Not able to find category"); 
         return {};
     }
     await category.update(data);
@@ -64,10 +64,21 @@ const update = async (data, categoryId) => {
   }
 };
 
+const destroy = async (categoryid)=> {
+  try {
+    const category = await Category.findByPk(categoryid);
+    await category.destroy();
+    return true;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 module.exports = {
   create,
   getAll,
   getById,
   getByName,
-  update 
+  update,
+  destroy
 };
