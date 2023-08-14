@@ -10,7 +10,11 @@ const routes = (app)=> {
     
     app.get(
         '/ecom/api/v1/products',
-        productController.getAllProducts 
+        productController.getAllProducts
+    )
+    app.get(
+        '/ecom/api/v1/products/:id',
+        productController.getProductById
     )
 }
 
