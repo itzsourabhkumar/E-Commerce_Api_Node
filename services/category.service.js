@@ -1,5 +1,5 @@
-// const {Category} = require('../models/index');
-const Category = require("../models/index").Category;
+const { Category, Product } = require("../models/index");
+//const Category = require("../models/index").Category;
 
 const create = async (data) => {
   try {
@@ -9,8 +9,8 @@ const create = async (data) => {
     });
     return category;
   } catch (err) {
-    console.log("Something went wrong"); 
-    console.log(err); 
+    console.log("Something went wrong");
+    console.log(err);
   }
 };
 
@@ -33,7 +33,7 @@ const getById = async (categoryId) => {
     const category = await Category.findByPk(categoryId);
     return category;
   } catch (err) {
-    console.log(err); 
+    console.log(err);
   }
 };
 
@@ -52,10 +52,10 @@ const getByName = async (categoryName) => {
 
 const update = async (data, categoryId) => {
   try {
-    const category = await Category.findByPk(categoryId);   
-    if(!category) {
-        console.log("Not able to find category"); 
-        return {};
+    const category = await Category.findByPk(categoryId);
+    if (!category) {
+      console.log("Not able to find category");
+      return {};
     }
     await category.update(data);
     return category;
@@ -64,15 +64,30 @@ const update = async (data, categoryId) => {
   }
 };
 
-const destroy = async (categoryid)=> {
+const destroy = async (categoryid) => {
   try {
     const category = await Category.findByPk(categoryid);
     await category.destroy();
     return true;
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
-}
+};
+
+const getProducts = async (categoryId, query) => {
+  try {
+    const category = await Category.findByPk(categoryId, {
+      include: {
+        model: Product,
+        limit: parseInt(query.limit),
+        offset: parseInt(query.offset)
+      },
+    });
+    return category;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 module.exports = {
   create,
@@ -80,5 +95,6 @@ module.exports = {
   getById,
   getByName,
   update,
-  destroy
+  destroy,
+  getProducts,
 };

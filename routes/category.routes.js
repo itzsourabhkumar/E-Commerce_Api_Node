@@ -30,6 +30,11 @@ const routes = (app)=>{
         '/ecom/api/v1/categories/:id',
         categoryController.deleteCategory
     );
+    app.get(
+        '/ecom/api/v1/categories/:id/products',
+        categoryValidator.validatorPaginator,
+        categoryController.getProductsByCategory
+    )
 }
 
 module.exports = routes;
