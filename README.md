@@ -9,6 +9,9 @@ E-Commerce Api project in NodeJS
     -Clone the repository
     -Go inside the cloned folder from your terminal/cmd
     -Run `npm install`
+    -Create a new file `.env` and then configure the following environment variables
+        -PORT=3000
+        -`npx sequelize init`
     
 -Run the Project
     -Run `node server.js`
@@ -24,3 +27,6 @@ E-Commerce Api project in NodeJS
     -Every product must belong to a category
     -Every category must have many produts
     -So between product and categories we have setup a 1:n( one to many ) relation
+
+##Seeding data in the database
+    -```npx sequelize db:seed:all```
