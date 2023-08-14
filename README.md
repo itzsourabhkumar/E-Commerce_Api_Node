@@ -19,3 +19,8 @@ E-Commerce Api project in NodeJS
     -PUT `/ecom/api/v1/category:id`, update a category,
     -DELETE `/ecom/api/v1/category:id`, delete a category,   
     -GET `/ecom/api/v1/category:id`, get the category,
+
+##Associations
+    -Every product must belong to a category
+    -Every category must have many produts
+    -So between product and categories we have setup a 1:n( one to many ) relation
