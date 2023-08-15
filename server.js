@@ -20,7 +20,7 @@ categoryRoutes(app);
 productRoutes(app);
 
 if(process.env.SYNC) {
-    dbSync(true);
+    dbSync(false);
 }
 
 const PORT = process.env.PORT; //this will be the port on our local system where server will run
